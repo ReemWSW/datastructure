@@ -43,10 +43,10 @@ class LinkList:
         while current is not None and count < position - 1:
             current = current.next
             count += 1
-        
+
         if current is None:
             print(f"Position {position} is out of range")
-        
+
         new_node.next = current.next
         current.next = new_node
 
@@ -57,11 +57,50 @@ class LinkList:
             current = current.next
         print("None")
 
+    def delete(self, value):
+        if self.head is None:
+            print("List is empty")
+            return
+
+        if self.head.data == value:
+            temp = self.head
+            self.head = temp.next
+            temp = None
+            return
+
+        current = self.head
+        while current.next is not None:
+            if current.next.data == value:
+                temp = current.next
+                current.next = temp.next
+                temp = None
+                return
+            current = current.next
+
+        print("Element is not found")
+        
+    def search(self, value):
+        current = self.head  
+        position = 0 
+        while current: 
+            if current.data == value: 
+                return f"Value '{value}' found at position {position}" 
+            current = current.next
+            position += 1
+        return f"Value '{value}' not found in the list" 
+
 
 get_list = LinkList()
 get_list.insert_at_beginning(20)
 get_list.insert_at_beginning(70)
 get_list.insert_at_end(100)
-get_list.insert_at_postion(10,0)
+get_list.insert_at_postion(10, 0)
 
 get_list.display()
+
+get_list.delete(100)
+get_list.display()
+
+
+print(get_list.search(20))
+print(get_list.search(100))
