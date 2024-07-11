@@ -1,12 +1,21 @@
-# ประกาศ Array ชื่อ "numbers" เก็บจำนวนเต็ม 5 ตัว
+# ประกาศอาร์เรย์ชื่อ "numbers" เก็บจำนวนเต็ม 5 ตัว
 numbers = [50, 20, 30, 10, 40]
 
-# เรียงลำดับ Array ด้วย Bubble Sort
-n = len(numbers)
-for i in range(n):
-    for j in range(0, n-i-1):
-        if numbers[j] > numbers[j+1]:
-            numbers[j], numbers[j+1] = numbers[j+1], numbers[j]
 
-# แสดง Array ที่เรียงลำดับแล้ว
-print(numbers)
+# ฟังก์ชันสำหรับเรียงลำดับอาร์เรย์ด้วยวิธี Bubble Sort
+def sorting(numbers):
+    n = len(numbers)  # หาความยาวของอาร์เรย์
+    # วนลูปผ่านอาร์เรย์ทั้งหมด
+    for i in range(n):
+        # วนลูปสำหรับเปรียบเทียบและสลับตำแหน่งองค์ประกอบ
+        for j in range(0, n - i - 1):
+            # ถ้าตัวเลขในตำแหน่ง j มากกว่าตัวเลขในตำแหน่ง j+1
+            if numbers[j] > numbers[j + 1]:
+                # สลับตำแหน่งของตัวเลขสองตัว
+                numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]
+
+
+# เรียกใช้ฟังก์ชันเรียงลำดับอาร์เรย์
+sorting(numbers)
+# แสดงอาร์เรย์ที่เรียงลำดับแล้ว
+print(numbers)  # พิมพ์อาร์เรย์ที่เรียงลำดับแล้ว
